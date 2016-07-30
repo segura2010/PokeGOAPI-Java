@@ -68,20 +68,25 @@ public class PokemonGo {
 			this.credentialProvider = credentialProvider;
 		}
 
-		playerProfile = null;
+		try{
+			playerProfile = null;
 
-		// send profile request to get the ball rolling
-		requestHandler = new RequestHandler(this, client);
-		Thread.sleep(300);
-		playerProfile = new PlayerProfile(this);
-		Thread.sleep(300);
-		inventories = new Inventories(this);
-		Thread.sleep(300);
+			// send profile request to get the ball rolling
+			requestHandler = new RequestHandler(this, client);
+			Thread.sleep(300);
+			playerProfile = new PlayerProfile(this);
+			Thread.sleep(300);
+			inventories = new Inventories(this);
+			Thread.sleep(300);
 
-		playerProfile.updateProfile();
-		Thread.sleep(300);
-		inventories.updateInventories();
-		Thread.sleep(300);
+			playerProfile.updateProfile();
+			Thread.sleep(300);
+			inventories.updateInventories();
+			Thread.sleep(300);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 
 		// should have proper end point now.
 		map = new Map(this);
